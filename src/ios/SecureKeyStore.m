@@ -26,6 +26,11 @@
 {
     // get keychain
     KeychainItemWrapper * keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"cordova.plugins.SecureKeyStore" accessGroup:nil];
+
+    // Modification to the plugin to prevent autologin issue with iOS
+    [keychain setObject:(id)kSecAttrAccessibleAfterFirstUnlock forKey:(id)kSecAttrAccessible];
+    // End modification
+
     NSString *error;
     // Serialize dictionary and store in keychain
     NSData *serializedDict = [NSPropertyListSerialization dataFromPropertyList:dict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
