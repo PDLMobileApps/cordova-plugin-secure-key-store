@@ -37,6 +37,16 @@
                 <param name="ios-package" value="SecureKeyStore" />
             </feature>
         </config-file>
+        <config-file target="*-Debug.plist" parent="keychain-access-groups">
+            <array>
+                <string>$(AppIdentifierPrefix)$PACKAGE_NAME</string>
+            </array>
+        </config-file>
+        <config-file target="*-Release.plist" parent="keychain-access-groups">
+            <array>
+                <string>$(AppIdentifierPrefix)$PACKAGE_NAME</string>
+            </array>
+        </config-file>
         <header-file src="src/ios/SecureKeyStore.h" />
         <source-file src="src/ios/SecureKeyStore.m"/>
         <header-file src="src/ios/KeychainItemWrapper.h"/>
